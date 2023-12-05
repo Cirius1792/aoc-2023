@@ -24,28 +24,29 @@ word_to_digit = {
 }
 
 NUMBERS = [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "0",
-        "one",
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine",
-    ]
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+]
 REVERSE_NUMBER = [w[::-1] for w in NUMBERS]
-word_to_digit_reversed = {k[::-1]:v for k,v in word_to_digit.items()}
+word_to_digit_reversed = {k[::-1]: v for k, v in word_to_digit.items()}
+
 
 def solve(line: str) -> int:
     def is_matching(word: str, pattern: str, converter):
@@ -116,10 +117,10 @@ class SolutionPartTwoTest(unittest.TestCase):
         actual = solve(line)
         assert expected == actual
 
-if __name__ == '__main__':
-    with open('./01/input.txt', 'r') as reader:
+
+if __name__ == "__main__":
+    with open("./01/input.txt", "r") as reader:
         acc = 0
         for line in reader:
             acc += solve(line)
         print(f"result: {acc}")
-
