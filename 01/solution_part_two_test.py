@@ -53,14 +53,13 @@ def solve(line: str) -> int:
         return (word.find(pattern), converter[pattern])
 
     def aux(line, to_match, converter):
-        for i in range(len(line)):
-            min_idx, min_idx_number = float("inf"), None
-            for pattern in to_match:
-                idx, number = is_matching(line[i:], pattern, converter)
-                if idx >= 0 and idx < min_idx:
-                    min_idx = idx
-                    min_idx_number = number
-            return min_idx_number
+       min_idx, min_idx_number = float("inf"), None
+       for pattern in to_match:
+           idx, number = is_matching(line, pattern, converter)
+           if idx >= 0 and idx < min_idx:
+               min_idx = idx
+               min_idx_number = number
+       return min_idx_number
 
     first_digit = aux(line, NUMBERS, word_to_digit)
     second_digit = aux(line[::-1], REVERSE_NUMBER, word_to_digit_reversed)
