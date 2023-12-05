@@ -52,7 +52,7 @@ class SolutionTest(unittest.TestCase):
         assert 77 == val
  
 if __name__ == '__main__':
-    with open('./01/input_part_one.txt', 'r') as reader:
+    with open('./01/input.txt', 'r') as reader:
         acc = 0
         for line in reader:
             acc += get_val_from_line(line)
