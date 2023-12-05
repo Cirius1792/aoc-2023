@@ -12,6 +12,14 @@ def print_game(game_id:int, games:List[Extraction], is_valid:bool):
         print(game)
     print(separator)
 
+def minimum_viable_game(extractions:List[Extraction]):
+    red_max, green_max, blue_max = 0, 0, 0
+    for extraction in extractions:
+        red_max = extraction.red if extraction.red > red_max else red_max
+        green_max = extraction.green if extraction.green > green_max else green_max
+        blue_max = extraction.blue if extraction.blue > blue_max else blue_max
+    return Extraction(red_max, green_max, blue_max)
+
 def solve(line: str, request: str):
     def is_valid_game(actual: Extraction, target: Extraction) -> bool:
         return (
@@ -20,13 +28,8 @@ def solve(line: str, request: str):
             and actual.blue <= target.blue
         )
 
-    red_max, green_max, blue_max = 0, 0, 0
     game_id, extractions = parse_game(line)
-    for extraction in extractions:
-        red_max = extraction.red if extraction.red > red_max else red_max
-        green_max = extraction.green if extraction.green > green_max else green_max
-        blue_max = extraction.blue if extraction.blue > blue_max else blue_max
-    current_game = Extraction(red_max, green_max, blue_max)
+    current_game = minimum_viable_game(extractions)
     target_game = parse_request(request)
     is_valid = is_valid_game(current_game, target_game)
     print_game(game_id, extractions, is_valid)
@@ -61,7 +64,7 @@ def parse_request(line: str):
 
 if __name__ == "__main__":
     request = "12 red, 13 green, 14 blue"
-    with open("./02/input.txt", "r") as reader:
+    with open("./day02/input.txt", "r") as reader:
         acc = 0
         for line in reader:
             id, outcome = solve(line, request)

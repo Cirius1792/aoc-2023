@@ -24,9 +24,4 @@ class SolutionTest(unittest.TestCase):
         assert 77 == val
 
 
-if __name__ == "__main__":
-    with open("./01/input.txt", "r") as reader:
-        acc = 0
-        for line in reader:
-            acc += solve(line)
-        print(f"result: {acc}")
+

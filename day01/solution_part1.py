@@ -11,4 +11,9 @@ def solve(line: str) -> int:
         i += 1
     return int(first_digit + second_digit)
 
-
+if __name__ == "__main__":
+    with open("./day01/input.txt", "r") as reader:
+        acc = 0
+        for line in reader:
+            acc += solve(line)
+        print(f"result: {acc}")

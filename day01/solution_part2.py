@@ -64,7 +64,7 @@ def solve(line: str) -> int:
 
 
 if __name__ == "__main__":
-    with open("./01/input.txt", "r") as reader:
+    with open("./day01/input.txt", "r") as reader:
         acc = 0
         for line in reader:
             acc += solve(line)
