@@ -16,3 +16,4 @@ This time we are required to look for strings and not just for digits. We'll kee
 |-----------------|------------------|
 | O(np) -> O(n)   | O(1)             |
 where p is the number of patterns to match in the strings, which is 20 as we are looking for the digits or words stating for numbers from zero to nine
+
