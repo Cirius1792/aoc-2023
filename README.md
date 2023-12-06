@@ -15,6 +15,7 @@ This time we are required to look for strings and not just for digits. We'll kee
 | Time Complexity | Space Complexity |
 |-----------------|------------------|
 | O(np) -> O(n)   | O(1)             |
+
 where p is the number of patterns to match in the strings, which is 20 as we are looking for the digits or words stating for numbers from zero to nine
 
 # Day Two - Cube Conundrum
@@ -36,6 +37,7 @@ We use the minimum viable game found in part 1, which is our solution.
 
 # Day Three - Gear Ratios
 I'll be honest, I struggled a bit with this one. 
+
 ## Part 1 
 The flow of the algorithm is the following: 
 1. Scan the matrix looking for anything but a digit, this is our symbol that "enables" the numbers in its surroundings. 
@@ -59,6 +61,7 @@ The flow of the algorithm is the following:
 | Time Complexity | Space Complexity |
 |-----------------|------------------|
 |  O(m*n)           | O(p)           |
+
 Where:
 - m is the number of rows
 - n is the number of columns
@@ -72,6 +75,7 @@ What changes in the algorithm described in part one is the following:
 | Time Complexity | Space Complexity |
 |-----------------|------------------|
 |  O(m*n)           | O(p)           |
+
 Where:
 - m is the number of rows
 - n is the number of columns
