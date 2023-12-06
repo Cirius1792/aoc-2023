@@ -17,3 +17,64 @@ This time we are required to look for strings and not just for digits. We'll kee
 | O(np) -> O(n)   | O(1)             |
 where p is the number of patterns to match in the strings, which is 20 as we are looking for the digits or words stating for numbers from zero to nine
 
+# Day Two - Cube Conundrum
+## Part 1 
+Given a target game, for each line of the input file we check if the extractions in the line are compatible with the target game.
+To do so, we gather the maximum number of cube for each color extracted during a game, let's call it "minimum viable game", and compare those numbers withe one in the target game. 
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n)           | O(1)             |
+
+
+## Part 2
+We use the minimum viable game found in part 1, which is our solution.
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n)           | O(1)             |
+
+# Day Three - Gear Ratios
+I'll be honest, I struggled a bit with this one. 
+## Part 1 
+The flow of the algorithm is the following: 
+1. Scan the matrix looking for anything but a digit, this is our symbol that "enables" the numbers in its surroundings. 
+2. Once we found a symbol, we look in the the cells around it for digits and store their positions. 
+    Let's take a sub matrix made as follows:
+    ```
+        __0___1___2__
+     0  |_._|_2_|_3_|
+     1  |_._|_$_|_._|
+     2  |_1_|_._|_._|
+    ```
+    The output of this step with the example above is: [(0,1), (0,2), (2,0)]
+3. For each index found in the previous step, parse the line containing the digit and merge the continuous digits as they are part of the same number. 
+    Therefore the indexes found in step two will be evaluated as follows:
+    ```
+    (0,1), (0,2)    -> 23
+    (2,0)           -> 1
+    ```
+4. sum up all the numbers
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(m*n)           | O(p)           |
+Where:
+- m is the number of rows
+- n is the number of columns
+- p is the number of digits in the matrix
+
+## Part 2
+What changes in the algorithm described in part one is the following: 
+1. We are no more looking for anything but a digit in step 1, but we are looking only for '*'
+2. In step 3, when we parse the numbers found in step two, we discard any * surrounded by more than three numbers
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(m*n)           | O(p)           |
+Where:
+- m is the number of rows
+- n is the number of columns
+- p is the number of digits in the matrix
+
+
