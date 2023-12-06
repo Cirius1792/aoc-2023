@@ -1,6 +1,6 @@
 # Advent of Code 2023
 
-# Day One -  Trebuchet?!
+# Day 1 -  Trebuchet?!
 ## Part 1
 The solution for the part one is straightforward, we just iterate over the line moving two pointers, one pointing at the start of the line and the second pointing at its tail. When we found an index containing a digit, we stop updating the corrisponding pointer and when the first digit form the tail and the first digit from the head are found, we are done. 
 | Time Complexity | Space Complexity |
@@ -18,7 +18,7 @@ This time we are required to look for strings and not just for digits. We'll kee
 
 where p is the number of patterns to match in the strings, which is 20 as we are looking for the digits or words stating for numbers from zero to nine
 
-# Day Two - Cube Conundrum
+# Day 2 - Cube Conundrum
 ## Part 1 
 Given a target game, for each line of the input file we check if the extractions in the line are compatible with the target game.
 To do so, we gather the maximum number of cube for each color extracted during a game, let's call it "minimum viable game", and compare those numbers withe one in the target game. 
@@ -35,7 +35,7 @@ We use the minimum viable game found in part 1, which is our solution.
 |-----------------|------------------|
 |  O(n)           | O(1)             |
 
-# Day Three - Gear Ratios
+# Day 3 - Gear Ratios
 I'll be honest, I struggled a bit with this one. 
 
 ## Part 1 
@@ -80,5 +80,14 @@ Where:
 - m is the number of rows
 - n is the number of columns
 - p is the number of digits in the matrix
+
+# Day 4 - Scratchcards
+## Part 1 
+Just intersect the sets and use the number of common elements as exponent for the power of two. Et voilà!
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n)           | O(1)           |
+
 
 
