@@ -16,6 +16,10 @@ def filter_directions(column, row, n_columns, n_rows):
             yield (row + x, column + y)
 
 
+def is_symbol(character: str) -> bool:
+    return not character.isdigit() and character != "."
+
+
 def find_numbers(problem: List[str]) -> Set[Tuple[int, int]]:
     n_rows, n_columns = len(problem), len(problem[0].strip())
     positions = set()
@@ -23,9 +27,7 @@ def find_numbers(problem: List[str]) -> Set[Tuple[int, int]]:
         for column in range(n_columns):
             if DEBUG:
                 print(f"({row}-{column}) => {problem[row][column]}")
-            if (
-                not problem[row][column].isdigit() and problem[row][column] != "."
-            ):  # I'm on a symbol!
+            if is_symbol(problem[row][column]):  # I'm on a symbol!
                 if DEBUG:
                     print(f"I'm a symbol -> {problem[row][column]}")
                 for direction in filter_directions(column, row, n_columns, n_rows):
@@ -69,7 +71,8 @@ def retrieve_numbers(sample: List[str]) -> List[int]:
             number, indexes = parse_number(sample[row], column)
             assert len(str(number)) == len(indexes)
             indexes = [(row, i) for i in indexes]
-            if DEBUG: (f"{number} - {indexes}")
+            if DEBUG:
+                (f"{number} - {indexes}")
             numbers.append(number)
             for idx in indexes:
                 matched.add(idx)
