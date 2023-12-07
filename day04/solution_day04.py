@@ -8,9 +8,9 @@ def parse_scratchcard(card: str):
             assert n not in number_set
             number_set.add(n)
         return number_set
-    
+
     card_raw = card.strip().split(":")
-    card_id = list(filter(lambda x:x, map(lambda x:x, card_raw[0].split(" "))))[1]
+    card_id = list(filter(lambda x: x, map(lambda x: x, card_raw[0].split(" "))))[1]
     [your_numbers_raw, winning_numbers_raw] = card_raw[1].split("|")
     your_numbers = build_num_set(your_numbers_raw)
     winning_numbers = build_num_set(winning_numbers_raw)
