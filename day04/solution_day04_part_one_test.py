@@ -4,9 +4,9 @@ from solution_day04 import parse_scratchcard, score, find_winning_numbers, solve
 
 class SolutionDay04PartOneTest(unittest.TestCase):
     def test_should_parse_a_scratchcard(self):
-        card = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53"
+        card = "Card   1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53"
         card_id, your_numers, winning_numbers = (
-            "1",
+            1,
             set(["41", "48", "83", "86", "17"]),
             set(["83", "86", "6", "31", "17", "9", "48", "53"]),
         )
@@ -48,3 +48,4 @@ class SolutionDay04PartOneTest(unittest.TestCase):
         ]
         expected_score = 13
         actual_score = solve(problem_input)
+        assert actual_score == expected_score

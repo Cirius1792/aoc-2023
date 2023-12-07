@@ -8,13 +8,13 @@ def parse_scratchcard(card: str):
             assert n not in number_set
             number_set.add(n)
         return number_set
-
-    card_raw = card.split(":")
-    card_id = card_raw[0].split(" ")[1].strip()
+    
+    card_raw = card.strip().split(":")
+    card_id = list(filter(lambda x:x, map(lambda x:x, card_raw[0].split(" "))))[1]
     [your_numbers_raw, winning_numbers_raw] = card_raw[1].split("|")
     your_numbers = build_num_set(your_numbers_raw)
     winning_numbers = build_num_set(winning_numbers_raw)
-    return card_id, your_numbers, winning_numbers
+    return int(card_id), your_numbers, winning_numbers
 
 
 def find_winning_numbers(your_numbers: Set[str], card_numbers: Set[str]):
