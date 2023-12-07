@@ -16,10 +16,10 @@ def count_won_cards(scratches: List[str]) -> Dict[int,int]:
         id, your_numbers, card_numbers = parse_scratchcard(card)
         winning_numbers = find_winning_numbers(your_numbers, card_numbers)
         won_cards = find_won_cards(id, winning_numbers)
-        for _ in range(cards[id]):
-            for i in won_cards:
-                if i in cards:
-                    cards[i] += 1
+        increment = cards[id]
+        for i in won_cards:
+            if i in cards:
+                cards[i] += increment
     return cards
 
 def count_score(won_card_count:Dict[int,int]) -> int:

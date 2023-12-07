@@ -87,7 +87,18 @@ Just intersect the sets and use the number of common elements as exponent for th
 
 | Time Complexity | Space Complexity |
 |-----------------|------------------|
-|  O(n)           | O(1)           |
+|  O(n)           | O(p)             |
+
+Where p are the numbers on each card
+
+## Part 2 
+This time we build a map where for each card we store its number of occurrences. The map is initially built counting each card once, than each time we found a winning card, we increment the number of occurrences of the won cards. 
+When incrementing the number of occurrences of a card, we have to keep in mind that the increment must be weighted for the actual number of scratchcard we have won so far for a given card. 
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n)           | O(n)             |
+
 
 
 
