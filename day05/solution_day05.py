@@ -17,7 +17,7 @@ class MapRange:
         range = None
         for r in self.ranges:
             if r.source <= v <= r.source + r.lenght - 1:
-                #        print(f"Found range{r}")
+                #        #print(f"Found range{r}")
                 range = r
                 break
         if range:
@@ -40,22 +40,22 @@ def parse_seeds(line: str) -> List[int]:
 
 def map_seed(mappings: List[MapRange], seed: int) -> int:
     if not mappings:
-        print("-"*10)
+        #print("-"*10)
         return seed
     mapped = mappings[0].map(seed)
-    print(f"Mapping {seed} \t-> {mapped} | using:\t {mappings[0].map_name}")
+    #print(f"Mapping {seed} \t-> {mapped} | using:\t {mappings[0].map_name}")
     return map_seed(mappings[1:], mapped)
 
 
-def solve(lines: List[str]) -> int:
-    seeds = parse_seeds(lines[0])
+def solve(lines: List[str], seeds_mapper=parse_seeds) -> int:
+    seeds = seeds_mapper(lines[0])
     mappings = []
     map_lines = []
     for line in lines[2:]:
-        print(f"Line: {line}")
+        #print(f"Line: {line}")
         if not line.strip():
             mapping = parse_map(map_lines)
-            print(f"Mapped: {mapping.map_name}")
+            #print(f"Mapped: {mapping.map_name}")
             mappings.append(mapping)
             map_lines = []
         else:
@@ -67,4 +67,4 @@ def solve(lines: List[str]) -> int:
 if __name__ == "__main__":
     with open("./day05/input.txt", "r") as reader:
         acc = solve(reader.readlines())
-        print(f"result: {acc}")
+        #print(f"result: {acc}")
