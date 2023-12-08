@@ -14,14 +14,14 @@ class MapRange:
         self.ranges.sort(key=lambda t: t.source)
 
     def map(self, v: int) -> int:
-        range = self.ranges[-1]
-        if not(range.source <= v <= range.source + range.lenght - 1):
-            return v
+        range = None
         for r in self.ranges:
             if r.source <= v <= r.source + r.lenght - 1:
                 range = r
                 break
-        return v - range.source + range.target
+        if range:
+            return v - range.source + range.target
+        return v
 
 
 def parse_map(lines: List[str]) -> MapRange:
@@ -39,12 +39,11 @@ def parse_seeds(line: str) -> List[int]:
 
 def map_seed(mappings: List[MapRange], seed: int) -> int:
     if not mappings:
-        #print("-"*10)
+        # print("-"*10)
         return seed
     mapped = mappings[0].map(seed)
-    #print(f"Mapping {seed} \t-> {mapped} | using:\t {mappings[0].map_name}")
+    # print(f"Mapping {seed} \t-> {mapped} | using:\t {mappings[0].map_name}")
     return map_seed(mappings[1:], mapped)
-
 
 
 def solve(lines: List[str], seeds_mapper=parse_seeds) -> int:
@@ -52,10 +51,10 @@ def solve(lines: List[str], seeds_mapper=parse_seeds) -> int:
     mappings = []
     map_lines = []
     for line in lines[2:]:
-        #print(f"Line: {line}")
+        # print(f"Line: {line}")
         if not line.strip():
             mapping = parse_map(map_lines)
-            #print(f"Mapped: {mapping.map_name}")
+            # print(f"Mapped: {mapping.map_name}")
             mappings.append(mapping)
             map_lines = []
         else:
