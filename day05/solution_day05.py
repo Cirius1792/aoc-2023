@@ -47,6 +47,7 @@ def map_seed(mappings: List[MapRange], seed: int) -> int:
     return map_seed(mappings[1:], mapped)
 
 
+
 def solve(lines: List[str], seeds_mapper=parse_seeds) -> int:
     seeds = seeds_mapper(lines[0])
     mappings = []
@@ -67,4 +68,4 @@ def solve(lines: List[str], seeds_mapper=parse_seeds) -> int:
 if __name__ == "__main__":
     with open("./day05/input.txt", "r") as reader:
         acc = solve(reader.readlines())
-        #print(f"result: {acc}")
+        print(f"result: {acc}")
