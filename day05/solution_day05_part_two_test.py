@@ -1,13 +1,23 @@
 import unittest
 
-from solution_day05_part_two import solve_part_two, parse_seed_range
+from solution_day05 import MapRange, Range
+from solution_day05_part_two import solve_part_two, parse_seed_range, map_reverse
 
 class SolutionDay05PartTwo(unittest.TestCase):
     def test_should_parse_the_seeds(self):
         seeds = "seeds: 79 4 55 2"
-        expected_seeds = [79, 80, 81, 82, 55, 56]
+        expected_seeds = [(79, 4), (55, 2)]
         actual_seeds = list(parse_seed_range(seeds))
         assert expected_seeds == actual_seeds
+
+    def test_should_map_in_reverse(self):
+        seed_to_soil = MapRange("seed-to-soil", [Range(50, 98, 2)])
+        soil_to_fertilizer = MapRange("soil_to_fertilized", [Range(1000, 50, 10)])
+        expected_seed = 99
+        mapping = 1001
+        actual_seed = map_reverse([seed_to_soil, soil_to_fertilizer], mapping)
+        assert expected_seed == actual_seed
+
 
     def test_should_solve_the_problem(self):
         problem_input = [

@@ -22,6 +22,17 @@ class MapRange:
             return v - range.source + range.target
         return v
 
+    def map_reverse(self, v:int) -> int:
+        range = None
+        for r in self.ranges:
+            if r.target <= v <= r.target + r.lenght - 1:
+                range = r
+                break
+        if range:
+            return v - range.target + range.source
+        return v
+ 
+
 
 def parse_map(lines: List[str]) -> MapRange:
     ranges = []
