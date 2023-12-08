@@ -4,8 +4,7 @@ from typing import List, Generator
 import multiprocessing 
 import functools
 
-from collections import namedtuple
-from solution_day05 import parse_map
+from solution_day05 import parse_map, MapRange
 
 def parse_seed_range(seed_ranges: str) -> Generator:
     seed_range_and_lenght = list(map(int, seed_ranges[6:].split()))
@@ -22,30 +21,13 @@ def parse_seed_range(seed_ranges: str) -> Generator:
                 pbar.update(1)
                 yield i   
 
-Range = namedtuple("Range", "target source lenght")
-
-
-class MapRange:
-    def __init__(self, map_name, ranges: List[Range]):
-        self.map_name = map_name
-        self.ranges: List[Range] = list(ranges)
-        self.ranges.sort(key=lambda t: t.source)
-
-    def map(self, v: int) -> int:
-        range = self.ranges[-1]
-        if not(range.source <= v <= range.source + range.lenght - 1):
-            return v
-        for r in self.ranges:
-            if r.source <= v <= r.source + r.lenght - 1:
-                range = r
-                break
-        return v - range.source + range.target
-
 def map_seed(mappings: List[MapRange], seed: int) -> int:
     mapped = seed
     for mapping in mappings: 
         mapped = mapping.map(mapped)
     return mapped
+
+
 
 
 

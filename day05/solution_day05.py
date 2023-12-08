@@ -14,15 +14,14 @@ class MapRange:
         self.ranges.sort(key=lambda t: t.source)
 
     def map(self, v: int) -> int:
-        range = None
+        range = self.ranges[-1]
+        if not(range.source <= v <= range.source + range.lenght - 1):
+            return v
         for r in self.ranges:
             if r.source <= v <= r.source + r.lenght - 1:
-                #        #print(f"Found range{r}")
                 range = r
                 break
-        if range:
-            return v - range.source + range.target
-        return v
+        return v - range.source + range.target
 
 
 def parse_map(lines: List[str]) -> MapRange:
