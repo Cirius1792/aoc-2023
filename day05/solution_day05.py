@@ -2,7 +2,6 @@ from typing import List
 
 from collections import namedtuple
 from typing import List
-from prettytable import PrettyTable
 
 Range = namedtuple("Range", "target source lenght")
 
