@@ -17,24 +17,15 @@ from numba import jit, prange
 
 @jit(nopython=True, parallel=True)
 def find_winning_tb(race: Tuple[int, int]) -> int:
-    def eval_distance(ta: int, tc: int, tc_1: int) -> int:
-        if ta == tc:
-            return 0
-        if ta == 0:
-            return 0
-        return tc_1 + ta
+    def eval_distance(ta: int, tc: int) -> int:
+        return tc * ta
 
     winning_t_b = 0
-    t = race[0] + 1
-    tc_1 = 0
+    t = race[0] 
     for ta in prange (1, t):
-        tc_1 = 0
-        for tc in range(ta +1, t):
-            #print(f"ta: {ta} tc:{tc} tc_1: {tc_1}")
-            tc_1 = eval_distance(ta, tc, tc_1)
-            if tc_1 > race[1]:
-                winning_t_b += 1
-                break
+        d = eval_distance(ta, t - ta)
+        if  d > race[1]:
+            winning_t_b += 1
     return winning_t_b
 
 

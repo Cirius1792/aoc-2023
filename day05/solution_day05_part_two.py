@@ -1,8 +1,5 @@
-from tqdm import tqdm
-from typing import List, Generator, Tuple
+from typing import List, Tuple
 
-import multiprocessing
-import functools
 from time import perf_counter
 
 from solution_day05 import parse_map, MapRange
