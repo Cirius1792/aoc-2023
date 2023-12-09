@@ -1,4 +1,4 @@
-from typing import List, Tuple 
+from typing import List, Tuple
 
 
 def parse_input(input_lines: List[str]) -> List[Tuple[int, int]]:
@@ -9,31 +9,32 @@ def parse_input(input_lines: List[str]) -> List[Tuple[int, int]]:
 
 
 def find_winning_tb(race: Tuple[int, int]) -> List[int]:
-    def eval_distance(ta:int, tc:int, m: List[List[int]]) -> int:
-        if ta == tc: 
+    def eval_distance(ta: int, tc: int, m: List[List[int]]) -> int:
+        if ta == tc:
             return 0
-        if ta == 0: 
+        if ta == 0:
             return 0
-        return m[ta][tc-1] + ta
+        return m[ta][tc - 1] + ta
 
     winning_t_b = set()
-    t = race[0] +1
-    m:List[List[int]]= [[0 for _ in range(t)] for _ in range(t)]
-    for ta in range(t):
-        for tc in range(ta, t):
+    t = race[0] + 1
+    m: List[List[int]] = [[0 for _ in range(t)] for _ in range(t)]
+    for ta in range(1, t):
+        for tc in range(ta + 1, t):
             m[ta][tc] = eval_distance(ta, tc, m)
-#            print(f"ta {ta}, tc {tc} -> {m[ta][tc]}")
+            #            print(f"ta {ta}, tc {tc} -> {m[ta][tc]}")
             if m[ta][tc] > race[1]:
                 winning_t_b.add(ta)
-#    for line in m: 
-#        print(line)
+    #    for line in m:
+    #        print(line)
 
     return list(winning_t_b)
 
-def solve(input_lines:List[str]) -> int:
+
+def solve(input_lines: List[str]) -> int:
     races = parse_input(input_lines)
     acc = 1
-    for race in races: 
+    for race in races:
         acc *= len(find_winning_tb(race))
     return acc
 
