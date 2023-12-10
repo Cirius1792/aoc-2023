@@ -8,7 +8,7 @@ Hand = namedtuple("Hand", "cards bid")
 def parse_input(input_lines: List[str] | Generator) -> List[Hand]:
     hands = []
     for line in input_lines:
-        vals = line.split()
+        vals = line.strip().split()
         hand = vals[0].strip()
         hands.append(Hand(hand, int(vals[1].strip())))
     return hands
@@ -42,6 +42,7 @@ def compare_hands(
     card_points_comparator=compare_hand_points,
     card_priorities=ALPHABET,
 ) -> int:
+
     card_points = card_points_comparator(hand_1, hand_2)
     if card_points != 0:
         return card_points
@@ -62,13 +63,13 @@ def compare_hands(
     return 0
 
 
-def rank_hands(input_hands: List[Hand]) -> List[Hand]:
-    return sorted(input_hands, key=cmp_to_key(compare_hands))
+def rank_hands(input_hands: List[Hand], hands_comparator=compare_hands) -> List[Hand]:
+    return sorted(input_hands, key=cmp_to_key(hands_comparator))
 
 
-def solve(input_lines: List[str]) -> int:
+def solve(input_lines: List[str], hands_comparator=compare_hands) -> int:
     hands = parse_input(input_lines)
-    ranked_hands = rank_hands(hands)
+    ranked_hands = rank_hands(hands, hands_comparator=hands_comparator)
     return sum([(i + 1) * hand.bid for i, hand in enumerate(ranked_hands)])
 
 
@@ -76,3 +77,4 @@ if __name__ == "__main__":
     with open("./day07/input.txt", "r") as reader:
         solution = solve(reader.readlines())
         print(f"result: {solution}")
+
