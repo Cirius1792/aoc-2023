@@ -101,5 +101,54 @@ When incrementing the number of occurrences of a card, we have to keep in mind t
 
 # Day 5: If You Give A Seed A Fertilizer 
 
+## Part 1
+Considering the limited number of seeds in input, we can just evaluate all the mappings and then grab the minimum)
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n)           | O(n+m)           |
+
+Where: 
+- n is the number of seeds in input
+- m are the ranges in the maps
+
+## Part 2
+This time the number of seeds is not so small and a brute force approach would take too much time and memory. Even changing the implementation to store only the smallest location found while we evaluate the seeds, we wouyld solvi only the space problem, not the time one. 
+
+The solution I found was the following: instead of mapping all the seeds in the input ranges and look for the minimum, do the opposite. Which is: start from the minimum location possible, map it back to an hypotetical corresponding seed and check if the seed is in one of the ranges in input. 
+
+It is still quite a brute force approach, and potentially there can be more efficient and smart ways to solve the problem, but it is a fairly simple solution to code and give us back the result in less the a couple of seconds on my machine. 
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(l)           | O(m)             |
+
+Where l is the number of locations between 0 and l_min that does not map into any of the input seed ranges
+
+# Day 6: Wait For It
+
+## Part 1
+I think I can say that the solution I gave for this part of the problem is probably the worst solution one can find, but I leave it here to remind to myself that more often than not, the first idea you have is not the best idea you can have. 
+
+My idea was: ok, the distance I can run at each millisecond is the distance of the previous millisecond plus the time I kept the button down... It seems tailored for a dynamic programming approach! So I made the worst dynamic programmi implementation of my life...
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n^2)           | O(n^2)         |
+
+## Part 2
+... and soon I paid for that, as it was impossible to get a solution for part two with that starting point. 
+
+So I started over again and did the math right this time: 
+- The distance you make in the end of the race is all that matters to know if you are going to win or not
+- The distance you can actually make in the end is tc * ta, where tc is the time the boat spend running and ta is the time you spend pressing the button
+- for every ta where ta*tc is greater than the duration of the race, you have a new possibility to win
+
+So this time we can brute force the solution without having to wait a life time. 
+
+It is still a brute force solution, but is super easy to implement and runs in a couple of seconds and this is what metters in a competitive programming challange I guess
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n)           | O(1)             |
 
 
