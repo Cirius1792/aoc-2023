@@ -1,4 +1,5 @@
-- [Advent of Code 2023](#advent-of-code-2023)
+# Advent of Code 2023
+
 - [Day 1 -  Trebuchet?!](#day-1-trebuchet)
    * [Part 1](#part-1)
    * [Part 2](#part-2)
@@ -20,10 +21,6 @@
 - [Day 7: Camel Cards](#day-7-camel-cards)
    * [Part 1](#part-1-6)
    * [Part 2](#part-2-6)
-
-
-<!-- TOC --><a name="advent-of-code-2023"></a>
-# Advent of Code 2023
 
 <!-- TOC --><a name="day-1-trebuchet"></a>
 # Day 1 -  Trebuchet?!
@@ -217,7 +214,10 @@ Counter({'Q': 3, 'J': 2})
 ```
 Are equivalent points regardless of the fact that we have 3 As in the first hand and 3 Qs in the second hand
 
-When we compare equal points between two hands, in this case, we use the alphabet: `AKQJT98765432` to determine which hand is the strongest one. 
+So we can compare two hands by doing the following: 
+1. Compare the most common cards in each hand 
+    If the most common card in a hand has, for example, occurrs 4 times and the most common card in the second hand occurrs 3 times, we already know that hands 1 wins. 
+2. If both hands have the same number of occurrences for their cards, we start comparing the cards one by one by considering the priority between the cards being: `AKQJT98765432`
 
 So we can define a custom comparator for a hand that takes into account the aforementioned rules, sorts the hands and uses their index in the sorted array as a rank. 
 
@@ -233,8 +233,8 @@ Where the main time complexity comes from sorting the list of hands
 ## Part 2
 
 We can totally use the same algorithm as part 1, we just need to: 
-- update the hand to replace all the Js with the stronger point in the hand (taking into account that the hand 'JJJJJ' stays as it is
-- change the alphabet used for the comparison of hands with the same point with: `AKQT98765432J`
+- update the hand to replace all the Js with the stronger point in the hand, which will be the card that has the bigger occurrence count. We have also to take into account that the hand 'JJJJJ' stays as it is
+- change the alphabet used for the comparison of hands with the same points with: `AKQT98765432J`
 
 | Time Complexity | Space Complexity |
 |-----------------|------------------|
