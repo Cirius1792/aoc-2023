@@ -151,4 +151,47 @@ It is still a brute force solution, but is super easy to implement and runs in a
 |-----------------|------------------|
 |  O(n)           | O(1)             |
 
+# Day 7: Camel Cards
+
+## Part 1
+Given that the type fo the card making a point is not relevant, a QQQQQ is the same of a 22222 in a first moment, we can say that all that metters for determining the points in a hand is the number of occurrences of any given card in a hand, not considering which card has a give count number.
+
+For example: 
+```
+>>> c = Counter("AAAJJ")
+>>> c
+Counter({'A': 3, 'J': 2})
+
+```
+And 
+```
+>>> c = Counter("QQQJJ")
+>>> c
+Counter({'Q': 3, 'J': 2})
+
+```
+Are totally equivalent points regardless the fact that we have 3 As in the first hand and 3 Qs in the second hand
+
+When we compare euqlas points between to hands, in this case we use the alphabet: `AKQJT98765432` to determine which hand is the strongest one. 
+
+So we can define a custom comparator for a hand that takes into account the aforementioned rules, sort the hands and use their index in the sorted array as a rank. 
+
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(nlog(n))     | O(n)             |
+
+Where the main time complexity cames from sorting the list of hands
+
+
+## Part 2
+
+We can totally use the same algorithm of part 1, we just need to: 
+- update the hand to replace all the Js with the stronger point in the hand (taking into account that the hand 'JJJJJ' stays as it is
+- change the alphabet used for the comparison of hands with the same point with: `AKQT98765432J`
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(nlog(n))     | O(n)             |
+
 
