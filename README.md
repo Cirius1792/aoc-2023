@@ -21,6 +21,10 @@
 - [Day 7: Camel Cards](#day-7-camel-cards)
    * [Part 1](#part-1-6)
    * [Part 2](#part-2-6)
+- [Day 8: Camel Cards](#day-8-haunted-wasteland)
+   * [Part 1](#part-1-7)
+   * [Part 2](#part-2-7)
+
 
 <!-- TOC --><a name="day-1-trebuchet"></a>
 # Day 1 -  Trebuchet?!
@@ -240,7 +244,9 @@ We can totally use the same algorithm as part 1, we just need to:
 |-----------------|------------------|
 |  O(nlog(n))     | O(n)             |
 
+<!-- TOC --><a name="day-8-haunted-wasteland"></a>
 # Day 8: Haunted Wasteland
+<!-- TOC --><a name="part-1-7"></a>
 ## Part 1
 Just build an adjacency matric from the input map and navigate through the nodes until you get to the node 'ZZZ'
 
@@ -253,6 +259,7 @@ Just build an adjacency matric from the input map and navigate through the nodes
 - Inside the loop, navigate is called, which has a time complexity of O(m), where m is the lenght of the instructions, i.e. the route to follow
 - Considering that the length of route is constant (it's fetched from problem_input[0]), the overall time complexity of solve can be approximated as O(n + p * m).
 
+<!-- TOC --><a name="part-2-7"></a>
 ## Part 2
 Considering that: 
 - the problm tells us that the number of steps to get to the arrival point is somehow constant respect to the lenght of the route (it must me at least a multiple of the lenght of the route, otherwise the map would have no sense), 
