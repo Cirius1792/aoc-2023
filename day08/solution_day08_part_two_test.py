@@ -1,17 +1,18 @@
 import unittest
-from solution_day08_part_two import find_starting_nodes, solve
 
+from solution_day08_part_two import find_starting_nodes, solve
 
 class SolutionDay08PartTwoTest(unittest.TestCase):
     def test_shold_find_the_starting_nodes(self):
         network = {
-            "AAA": ["BBB", "CCC"],
-            "BBB": ["CCA", "EEE"],
-            "CCA": ["ZZZ", "GGG"],
-        }
+                "AAA": ["BBB", "CCC"],
+                "BBB": ["CCA", "EEE"],
+                "CCA": ["ZZZ", "GGG"],
+                 }
         expected_starting_nodes = ["AAA", "CCA"]
         actual_starting_nodes = find_starting_nodes(network)
         assert expected_starting_nodes == actual_starting_nodes
+ 
 
     def test_should_solve_the_problem(self):
         problem_input = [

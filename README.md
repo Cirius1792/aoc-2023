@@ -240,4 +240,32 @@ We can totally use the same algorithm as part 1, we just need to:
 |-----------------|------------------|
 |  O(nlog(n))     | O(n)             |
 
+# Day 8: Haunted Wasteland
+## Part 1
+Just build an adjacency matric from the input map and navigate through the nodes until you get to the node 'ZZZ'
+
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+|  O(n + p * m)   | O(n)             |
+
+- parse_network runs in O(n) time.
+- The while loop in *solve* keeps running until current_position becomes "ZZZ". The number of iterations depends on the structure of the network and the given route. Let's denote the number of iterations in the while loop as p.
+- Inside the loop, navigate is called, which has a time complexity of O(m), where m is the lenght of the instructions, i.e. the route to follow
+- Considering that the length of route is constant (it's fetched from problem_input[0]), the overall time complexity of solve can be approximated as O(n + p * m).
+
+## Part 2
+Considering that: 
+- the problm tells us that the number of steps to get to the arrival point is somehow constant respect to the lenght of the route (it must me at least a multiple of the lenght of the route, otherwise the map would have no sense), 
+- There must be cycles going from any starting point to each respective arrival point to make the problem solvable, given the previous point 
+
+Our goal can be split in three peaces: 
+1. Identify the starting points, which is trivial, just scan the map and look for any **A 
+2. Identify the cycles from each starting point to each respective arrival point
+3. Find the minimum number of cycles that must be covered to get to the point in which from all our starting point, the respective arrival points are reached. 
+
+Let's consider the example: 
+We have two starting points: `11A, 22A`
+We reach a final point from `11A` iterating only one time over the given route, which is in 2 steps
+We reach a final point from `22A` iterating 3 times over the given route, which is in 6 steps
+The least common multiple between these two number is 6, which is our solution
 

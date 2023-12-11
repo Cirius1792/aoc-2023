@@ -14,7 +14,11 @@ def parse_network(network_lines: List[str]) -> Network:
     return network
 
 
-def navigate(current_node: str, instruction: str, network: Network) -> str:
+def navigate(
+    current_node: str,
+    instruction: str,
+    network: Network
+) -> str:
     curr_pos = current_node
     for i in instruction:
         branch = 0 if i == "L" else 1
