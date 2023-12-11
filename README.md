@@ -21,7 +21,7 @@
 - [Day 7: Camel Cards](#day-7-camel-cards)
    * [Part 1](#part-1-6)
    * [Part 2](#part-2-6)
-- [Day 8: Camel Cards](#day-8-haunted-wasteland)
+- [Day 8: Haunted Wasteland](#day-8-haunted-wasteland)
    * [Part 1](#part-1-7)
    * [Part 2](#part-2-7)
 
